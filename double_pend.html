@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="stylesheet" href="jquery.svg.css" type="text/css" />
+        <style type="text/css">
+            #wrapper {
+                width: 800px;
+                height: 600px;
+                border: 1px solid blue;
+                float: left;
+                position: absolute;
+            }
+
+            #svgcanvas {
+                width: 800px;
+                height: 600px;
+                position: absolute;
+            }
+
+            #canvas {
+                position: absolute;
+            }
+
+            #control {
+                float: right;
+            }
+        </style>
+        <script type="text/javascript" src="jquery-1.6.1.min.js"></script>
+        <script type="text/javascript" src="jquery.svg.js"></script>
+        <script type="text/javascript" src="jquery.svganim.js"></script>
+        <script type="text/javascript" src="odesolver.js"></script>
+        <script type="text/javascript" src="caneq.js"></script>
+        <script type="text/javascript" src="double_pend.js"></script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <canvas width="800" height="600" id="canvas"></canvas>
+            <div id="svgcanvas"></div>
+        </div>
+        <div id="control">
+            <div>
+            真のエネルギー:<span id="tenergy"></span> J<br />
+            全エネルギー:<span id="energy"></span> J<br />
+            時間:<span id="time"></span> s<br />
+            <br />
+            初期条件<br />
+            一般化座標q_1:<input id="initq1"/><br />
+            一般化運動量p_1(J s):<input id="initp1"/><br />
+            一般化座標q_2:<input id="initq2"/><br />
+            一般化運動量p_2(J s):<input id="initp2"/><br /><br />
+            その他条件<br />
+            時間比率:<input id="ratio"/><br />
+            重りの質量m_1(kg):<input id="m1"/><br />
+            重りの質量m_2(kg):<input id="m2"/><br />
+            重力加速度g(m/s^2):<input id="g"/><br />
+            棒の長さl_1(m):<input id="l1"/><br />
+            棒の長さl_2(m):<input id="l2"/><br />
+            重り2の軌跡を表示:<input type="checkbox" id="draw" checked/><br />
+            常微分方程式ソルバ:<select id="ode">
+                <option value="euler">Euler method</option>
+                <option value="rk2">Runge-Kutta method(second order)</option>
+                <option value="rk4" selected>Runge-Kutta method(fourth order)</option>
+                <option value="lf">Leap-Frog method(second order)</option>
+                <option value="ad3">Adams-Bashforth method(third order)</option>
+                <option value="ad6">Adams-Bashforth method(sixth order)</option>
+                <option value="symplectic1">Symplectic method(1st order)</option>
+            </select><br /><br />
+
+            <input type="button" value="set and restart" id="sb" />
+            <input type="button" value="stop" id="stopbutton" />
+            <input type="button" value="resume" id="resumebutton" />
+            <input type="button" value="init" id="initbutton" />
+
+            </div>
+        </div>
+    </body>
+</html>
